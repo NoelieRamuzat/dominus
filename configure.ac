@@ -7,6 +7,7 @@ AC_CONFIG_AUX_DIR([config])
 AM_INIT_AUTOMAKE([-Wall -Werror foreign])
 AM_PROG_AR
 AC_PROG_CC
+AC_PROG_CXX 
 AM_CONFIG_HEADER([config.h])
 
 # libtool init
@@ -14,6 +15,9 @@ LT_INIT
 AC_ENABLE_SHARED
 
 # check headers
+AC_CHECK_HEADER(sys/socket.h, [],
+                [AC_MSG_ERROR(["Couldn't find sys/socket.h"])])
+
 AC_CHECK_HEADER(curl/curl.h, [],
                 [AC_MSG_ERROR(["Couldn't find curl/curl.h"])])
 
